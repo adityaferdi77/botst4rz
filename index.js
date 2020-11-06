@@ -13,10 +13,10 @@ const donate = require("./lib/donate.js");
 const info = require("./lib/info.js");
 //
 const BotName = 'DANTOD BOT 🤖'; // Nama Bot Whatsapp
-const instagramlu = 'https://instagram.com/dani.rknt?igshid=1fkmgo8vo2qeb'; // Nama Instagramlu cok
+const instagramlu = 'https://instagram.com/dani.rknt'; // Nama Instagramlu cok
 const whatsapplu = '0812-3497-5117'; // Nomor whatsapplu cok
 const kapanbotaktif = '24 Jam'; // Kapan bot lu aktif
-const grupch1 = ''; // OFFICIAL GRUP LU 1
+const grupch1 = 'https://chat.whatsapp.com/FnzgW2IuAKI2mgb9oD1CUU'; // OFFICIAL GRUP LU 1
 const grupch2 = ''; // OFFICIAL GRUP LU 2
 //
 const
@@ -456,7 +456,7 @@ var tampilTanggal = "TANGGAL: " + hari + ", " + tanggal + " " + bulan + " " + ta
 var tampilWaktu = "JAM: " + jam + ":" + menit + ":" + detik;
 conn.sendMessage(id, donate.donate(id, BotName, corohelp, tampilTanggal, tampilWaktu, instagramlu, whatsapplu, kapanbotaktif, grupch1, grupch2) ,MessageType.text);
 }
-else if (text == '#info'){
+else if (text == '#info.'){
   const corohelp = await get.get('https://covid19.mathdro.id/api/countries/id').json()
 var date = new Date();
 var tahun = date.getFullYear();
@@ -535,7 +535,7 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
       }
 
    }
-   if (text.includes("#yt"))
+/*   if (text.includes("#yt"))
    {
       const url = text.replace(/#yt/, "");
       const exec = require('child_process').exec;
@@ -594,10 +594,10 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
          }
       });
 
-   }
+   }*/
 
 
-   if (text.includes("#nulis"))
+   /*if (text.includes("#nulis"))
    {
 
       const
