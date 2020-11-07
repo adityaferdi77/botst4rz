@@ -221,9 +221,6 @@ axios.get('https://api.banghasan.com/quran/format/json/acak').then((res) => {
 else if (text == 'assalamualaikum'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
-else if (text == '#sticker'){
-conn.sendMessage(id, 'Sedang diproses.. jangan lupa follow ig https://instagram.com/dani.rknt' ,MessageType.text);
-}
 else if (text == 'salam'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
