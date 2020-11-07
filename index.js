@@ -518,10 +518,8 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
 
    if (messageType == 'imageMessage')
    {
-      let caption = imageMessage.caption.toLocaleLowerCase()
-      const buffer = await conn.downloadMediaMessage(m) // to decrypt & use as a buffer
       if (caption == '#sticker')
-      conn.sendMessage(id, 'Sedang diproses.. jangan lupa follow ig https://instagram.com/dani.rknt' ,MessageType.text);
+      conn.sendMessage(id, 'Sedang diproses.. jangan lupa follow ig https://instagram.com/dani.rknt' ,MessageType.text)
          });
       }
    }
