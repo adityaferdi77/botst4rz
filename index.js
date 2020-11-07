@@ -766,9 +766,9 @@ scdl("https://m.soundcloud.com/abdul-muttaqin-701361735/lucid-dreams-gustixa-ft-
   var filepath = 'mp3/bacot.wav';
   
   
-/*
- * save audio file
- */
+
+  save audio file
+ 
 
 gtts.save(filepath, suara, function() {
   console.log(`${filepath} MP3 SAVED!`)
