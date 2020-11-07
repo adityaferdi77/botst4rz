@@ -63,11 +63,11 @@ fs.existsSync('./session.json') && conn.loadAuthInfo('./session.json')
 //conn.connectOptions.agent = ProxyAgent ('http://1.0.180.120:8080')
 conn.connect();
 
-conn.on('user-presence-update', json => console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @bintang_nur_pradana`))
+conn.on('user-presence-update', json => console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @dani.rknt`))
 conn.on('message-status-update', json =>
 {
    const participant = json.participant ? ' (' + json.participant + ')' : '' // participant exists when the message is from a group
-   console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @bintang_nur_pradana`)
+   console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @dani.rknt`)
 })
 
 conn.on('message-new', async(m) =>
@@ -535,7 +535,7 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
       }
 
    }
-/*   if (text.includes("#yt"))
+   if (text.includes("#yt"))
    {
       const url = text.replace(/#yt/, "");
       const exec = require('child_process').exec;
@@ -594,10 +594,10 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
          }
       });
 
-   }*/
+   }
 
 
-   /*if (text.includes("#nulis"))
+   if (text.includes("#nulis"))
    {
 
       const
@@ -656,7 +656,7 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
             );
 
          });
-   }*/
+   }
 
    if (text.includes("#ptl cewek"))
    {
