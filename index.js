@@ -516,14 +516,6 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
       }
    }
 
-   if (messageType == 'imageMessage')
-   {
-      if (caption == '#sticker')
-      conn.sendMessage(id, 'Sedang diproses.. jangan lupa follow ig https://instagram.com/dani.rknt' ,MessageType.text)
-         });
-      }
-   }
-
    if (messageType === MessageType.text)
    {
       let is = m.message.conversation.toLocaleLowerCase()
