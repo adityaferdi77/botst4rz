@@ -13,9 +13,9 @@ const donate = require("./lib/donate.js");
 const info = require("./lib/info.js");
 //
 const BotName = 'DANTOD'; // Nama Bot Whatsapp
-const instagramlu = 'https://instagram.com/dani.rknt'; // Nama Instagramlu cok
+const instagramlu = 'instagram.com/dani.rknt'; // Nama Instagramlu cok
 const whatsapplu = '0812-3497-5117'; // Nomor whatsapplu cok
-const kapanbotaktif = '24 Jam'; // Kapan bot lu aktif
+const kapanbotaktif = 'gak nentu'; // Kapan bot lu aktif
 const grupch1 = 'https://chat.whatsapp.com/FnzgW2IuAKI2mgb9oD1CUU'; // OFFICIAL GRUP LU 1
 const grupch2 = ''; // OFFICIAL GRUP LU 2
 //
