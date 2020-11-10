@@ -771,7 +771,7 @@ if (text.includes("#randomanime"))
     });
     }
 
-/*if (text.includes("#scdl")){
+if (text.includes("#scdl")){
 const fs = require("fs");
 const scdl = require("./lib/scdl");
 scdl.setClientID("iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX");
