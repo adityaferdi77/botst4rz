@@ -134,6 +134,10 @@ if (text.includes("@𝔇𝔞𝔯𝔨 ༢")){
 conn.sendMessage(id, 'ada apa ngetag majikan gw?' MessageType.text)
 }
 
+if (text.includes("@6285730343064")){
+conn.sendMessage(id, 'ada apa ngetag majikan gw?' MessageType.text)
+}
+
 if (text.includes("#nulis")){
   const teks = text.replace(/#nulis /, "")
 axios.get(`https://st4rz.herokuapp.com/api/nulis?text=${teks}`).then((res) => {
