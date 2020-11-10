@@ -14,7 +14,7 @@ const info = require("./lib/info.js");
 //
 const BotName = 'DANTOD'; // Nama Bot Whatsapp
 const instagramlu = 'instagram.com/dani.rknt'; // Nama Instagramlu cok
-const whatsapplu = '0812-3497-5117'; // Nomor whatsapplu cok
+const whatsapplu = '0857-3034-3064'; // Nomor whatsapplu cok
 const kapanbotaktif = 'gak nentu'; // Kapan bot lu aktif
 const grupch1 = 'https://chat.whatsapp.com/FnzgW2IuAKI2mgb9oD1CUU'; // OFFICIAL GRUP LU 1
 const grupch2 = ''; // OFFICIAL GRUP LU 2
@@ -48,7 +48,7 @@ conn.on('qr', qr =>
    {
       small: true
    });
-   console.log(`[ ${moment().format("HH:mm:ss")} ] Scan kode qr nya`);
+   console.log(`[ ${moment().format("HH:mm:ss")} ] Scan kode qr mu cok!`);
 });
 
 conn.on('credentials-updated', () =>
@@ -522,26 +522,6 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
       }
    }
 
-   if (messageType == 'imageMessage')
-   {
-      let caption = imageMessage.caption.toLocaleLowerCase()
-      const buffer = await conn.downloadMediaMessage(m) // to decrypt & use as a buffer
-      if (caption == '#stiker')
-      {
-         const stiker = await conn.downloadAndSaveMediaMessage(m) // to decrypt & save to file
-
-         const
-         {
-            exec
-         } = require("child_process");
-         exec('cwebp -q 50 ' + stiker + ' -o temp/' + jam + '.webp', (error, stdout, stderr) =>
-         {
-            let stik = fs.readFileSync('temp/' + jam + '.webp')
-            conn.sendMessage(id, stik, MessageType.sticker)
-         });
-      }
-   }
-
    if (messageType === MessageType.text)
    {
       let is = m.message.conversation.toLocaleLowerCase()
@@ -561,7 +541,7 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
       }
 
    }
-   if (text.includes("#yt"))
+     if (text.includes("#yt"))
    {
       const url = text.replace(/#yt/, "");
       const exec = require('child_process').exec;
@@ -623,7 +603,7 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
    }
 
 
-   if (text.includes("#nulis"))
+     if (text.includes("#nulis"))
    {
 
       const
@@ -771,7 +751,7 @@ if (text.includes("#randomanime"))
     });
     }
 
-if (text.includes("#scdl")){
+  if (text.includes("#scdl")){
 const fs = require("fs");
 const scdl = require("./lib/scdl");
 scdl.setClientID("iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX");
@@ -787,9 +767,9 @@ scdl("https://m.soundcloud.com/abdul-muttaqin-701361735/lucid-dreams-gustixa-ft-
   var filepath = 'mp3/bacot.wav';
   
   
- /*
-  *save audio file
-  */
+/*
+ * save audio file
+ */
 
   gtts.save(filepath, suara, function() {
   console.log(`${filepath} MP3 SAVED!`)
