@@ -225,7 +225,7 @@ axios.get('https://api.banghasan.com/quran/format/json/acak').then((res) => {
 })
 }
 else if (text == 'assalamualaikum'){
-conn.sendMessage(id, '3aalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
 else if (text == 'salam'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
@@ -507,6 +507,26 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
       let caption = imageMessage.caption.toLocaleLowerCase()
       const buffer = await conn.downloadMediaMessage(m) // to decrypt & use as a buffer
       if (caption == '#sticker')
+      {
+         const stiker = await conn.downloadAndSaveMediaMessage(m) // to decrypt & save to file
+
+         const
+         {
+            exec
+         } = require("child_process");
+         exec('cwebp -q 50 ' + stiker + ' -o temp/' + jam + '.webp', (error, stdout, stderr) =>
+         {
+            let stik = fs.readFileSync('temp/' + jam + '.webp')
+            conn.sendMessage(id, stik, MessageType.sticker)
+         });
+      }
+   }
+
+   if (messageType == 'imageMessage')
+   {
+      let caption = imageMessage.caption.toLocaleLowerCase()
+      const buffer = await conn.downloadMediaMessage(m) // to decrypt & use as a buffer
+      if (caption == '#stiker')
       {
          const stiker = await conn.downloadAndSaveMediaMessage(m) // to decrypt & save to file
 
