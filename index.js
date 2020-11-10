@@ -122,26 +122,6 @@ if (text.includes("#say")){
 conn.sendMessage(id, teks, MessageType.text)
 }
 
-if (text.includes("#say dani")){
-conn.sendMessage(id, 'ada apa nyebut majikan gw?' MessageType.text)
-}
-
-if (text.includes("dani")){
-conn.sendMessage(id, 'ada apa nyebut majikan gw?' MessageType.text)
-}
-
-if (text.includes("@𝔇𝔞𝔯𝔨 ༢")){
-conn.sendMessage(id, 'ada apa ngetag majikan gw?' MessageType.text)
-}
-
-if (text.includes("@Aku")){
-conn.sendMessage(id, 'ada apa ngetag majikan gw?' MessageType.text)
-}
-
-if (text.includes("@6285730343064")){
-conn.sendMessage(id, 'ada apa ngetag majikan gw?' MessageType.text)
-}
-
 if (text.includes("#nulis")){
   const teks = text.replace(/#nulis /, "")
 axios.get(`https://st4rz.herokuapp.com/api/nulis?text=${teks}`).then((res) => {
@@ -246,6 +226,9 @@ axios.get('https://api.banghasan.com/quran/format/json/acak').then((res) => {
 }
 else if (text == 'assalamualaikum'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help' ,MessageType.text);
+}
+else if (text == '@aku'){
+conn.sendMessage(id, 'ada apa ngetag?' ,MessageType.text);
 }
 else if (text == 'salam'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help' ,MessageType.text);
