@@ -134,6 +134,10 @@ if (text.includes("@𝔇𝔞𝔯𝔨 ༢")){
 conn.sendMessage(id, 'ada apa ngetag majikan gw?' MessageType.text)
 }
 
+if (text.includes("@Aku")){
+conn.sendMessage(id, 'ada apa ngetag majikan gw?' MessageType.text)
+}
+
 if (text.includes("@6285730343064")){
 conn.sendMessage(id, 'ada apa ngetag majikan gw?' MessageType.text)
 }
