@@ -268,7 +268,8 @@ else if (msg.body.startsWith("!brainly ")) {
 			res.forEach(x=>{
 				msg.reply(`*foto pertanyaan*\n${x.fotoPertanyaan.join('\n')}\n*pertanyaan :*\n${x.pertanyaan}\n\n*jawaban :*\n${x.jawaban.judulJawaban}\n*foto jawaban*\n${x.jawaban.fotoJawaban.join('\n')}`)
 			})
-		})
+})
+}		
 else if (text == 'assalamualaikum'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help' ,MessageType.text);
 }
