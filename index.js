@@ -48,7 +48,7 @@ conn.on('qr', qr =>
    {
       small: true
    });
-   console.log(`[ ${moment().format("HH:mm:ss")} ] Scan kode qr mu cok!`);
+   console.log(`[ ${moment().format("HH:mm:ss")} ] Scan kode qr mu!`);
 });
 
 conn.on('credentials-updated', () =>
@@ -522,6 +522,26 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
       }
    }
 
+   if (messageType == 'imageMessage')
+   {
+      let caption = imageMessage.caption.toLocaleLowerCase()
+      const buffer = await conn.downloadMediaMessage(m) // to decrypt & use as a buffer
+      if (caption == '#sticker')
+      {
+         const stiker = await conn.downloadAndSaveMediaMessage(m) // to decrypt & save to file
+
+         const
+         {
+            exec
+         } = require("child_process");
+         exec('cwebp -q 50 ' + stiker + ' -o temp/' + jam + '.webp', (error, stdout, stderr) =>
+         {
+            let stik = fs.readFileSync('temp/' + jam + '.webp')
+            conn.sendMessage(id, stik, MessageType.sticker)
+         });
+      }
+   }
+
    if (messageType === MessageType.text)
    {
       let is = m.message.conversation.toLocaleLowerCase()
@@ -774,7 +794,7 @@ scdl("https://m.soundcloud.com/abdul-muttaqin-701361735/lucid-dreams-gustixa-ft-
   gtts.save(filepath, suara, function() {
   console.log(`${filepath} MP3 SAVED!`)
 });
-await new Promise(resolve => setTimeout(resolve, 500));*/
+await new Promise(resolve => setTimeout(resolve, 500));
 
 	if(suara.length > 200){ // check longness of text, because otherways google translate will give me a empty file
   msg.reply("Text kepanjangan bro!")
