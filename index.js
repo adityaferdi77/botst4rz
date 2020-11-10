@@ -48,7 +48,7 @@ conn.on('qr', qr =>
    {
       small: true
    });
-   console.log(`[ ${moment().format("HH:mm:ss")} ] Scan kode qr mu cok!`);
+   console.log(`[ ${moment().format("HH:mm:ss")} ] Scan kode qr nya`);
 });
 
 conn.on('credentials-updated', () =>
@@ -111,21 +111,21 @@ console.log(exists);
 conn.sendMessage(id ,`${gg} ${exists ? " exists " : " does not exist"} on WhatsApp`, MessageType.text)
 }
 
-if (text.includes("#say")){
-  const teks = text.replace(/#say /, "")
-conn.sendMessage(id, teks, MessageType.text)
-}
-
 if (text.includes("#tts")){
 const teks = text.replace(/#tts /, "")
 const gtts = (`https://rest.farzain.com/api/tts.php?id=${teks}&apikey=O8mUD3YrHIy9KM1fMRjamw8eg`)
     conn.sendMessage(id, gtts ,MessageType.text);
 }
 
+if (text.includes("#say")){
+  const teks = text.replace(/#say /, "")
+conn.sendMessage(id, teks, MessageType.text)
+}
+
 if (text.includes("#nulis")){
   const teks = text.replace(/#nulis /, "")
 axios.get(`https://st4rz.herokuapp.com/api/nulis?text=${teks}`).then((res) => {
-    let hasil = `Download sendiri ya hasilnya dibawah, soalnya kalo dikirim langsung hasilnya blur\n\n${res.data.linkAudioOnly}`;
+    let hasil = `Download sendiri ya hasilnya dibawah, soalnya kalo dikirim langsung hasilnya blur\n\n${res.data.result.data}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -156,7 +156,7 @@ axios.get(`https://mhankbarbar.herokuapp.com/api/epbe?url=${teks}&apiKey=zFuV88p
 
 if (text.includes("#ig")){
 const teks = text.replace(/#ig /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/api/ig?url=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
+axios.get(`https://st4rz.herokuapp.com/api/ig?url=${teks}`).then((res) => {
     let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
@@ -172,7 +172,7 @@ axios.get(`https://mhankbarbar.herokuapp.com/api/twit?url=${teks}&apiKey=zFuV88p
 
 if (text.includes("#wiki")){
 const teks = text.replace(/#wiki /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/api/wiki?q=${teks}&lang=id&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
+axios.get(`https://st4rz.herokuapp.com/api/wiki?q=${teks}`).then((res) => {
     let hasil = `Menurut Wikipedia:\n\n${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
@@ -225,7 +225,7 @@ axios.get('https://api.banghasan.com/quran/format/json/acak').then((res) => {
 })
 }
 else if (text == 'assalamualaikum'){
-conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+conn.sendMessage(id, '3aalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
 else if (text == 'salam'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
@@ -522,26 +522,6 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
       }
    }
 
-   if (messageType == 'imageMessage')
-   {
-      let caption = imageMessage.caption.toLocaleLowerCase()
-      const buffer = await conn.downloadMediaMessage(m) // to decrypt & use as a buffer
-      if (caption == '#stiker')
-      {
-         const stiker = await conn.downloadAndSaveMediaMessage(m) // to decrypt & save to file
-
-         const
-         {
-            exec
-         } = require("child_process");
-         exec('cwebp -q 50 ' + stiker + ' -o temp/' + jam + '.webp', (error, stdout, stderr) =>
-         {
-            let stik = fs.readFileSync('temp/' + jam + '.webp')
-            conn.sendMessage(id, stik, MessageType.sticker)
-         });
-      }
-   }
-
    if (messageType === MessageType.text)
    {
       let is = m.message.conversation.toLocaleLowerCase()
@@ -771,18 +751,13 @@ if (text.includes("#randomanime"))
     });
     }
 
-if (text.includes("#scdl")){
+/*if (text.includes("#scdl")){
 const fs = require("fs");
 const scdl = require("./lib/scdl");
-
 scdl.setClientID("iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX");
-
 scdl("https://m.soundcloud.com/abdul-muttaqin-701361735/lucid-dreams-gustixa-ft-vict-molina")
     .pipe(fs.createWriteStream("mp3/song.mp3"));
 }
-
-
-
  else if (text.includes("#tts")) {
   var teks = text.split("#ttsid ")[1];
   var path = require('path');
@@ -792,25 +767,21 @@ scdl("https://m.soundcloud.com/abdul-muttaqin-701361735/lucid-dreams-gustixa-ft-
   var filepath = 'mp3/bacot.wav';
   
   
- /*
-  *save audio file
-  */
 
-gtts.save(filepath, suara, function() {
+   save audio file
+ 
+
+  gtts.save(filepath, suara, function() {
   console.log(`${filepath} MP3 SAVED!`)
 });
-await new Promise(resolve => setTimeout(resolve, 500));
+await new Promise(resolve => setTimeout(resolve, 500));*/
 
 	if(suara.length > 200){ // check longness of text, because otherways google translate will give me a empty file
   msg.reply("Text kepanjangan bro!")
 }else{
-
 const buffer = fs.readFileSync(filepath)
 	conn.sendMessage(id , buffer , MessageType.audio);
-
 };
-
-
 }
 
 
