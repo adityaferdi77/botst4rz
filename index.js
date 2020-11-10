@@ -224,6 +224,51 @@ axios.get('https://api.banghasan.com/quran/format/json/acak').then((res) => {
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
+else if (msg.body.startsWith("!brainly ")) {
+		function BrainlySearch(pertanyaan, amount,cb){
+ 	   		brainly(pertanyaan.toString(),Number(amount)).then(res => {
+
+	      		let brainlyResult=[];
+
+        		res.forEach(ask=>{
+	          		let opt={
+        	    		pertanyaan:ask.pertanyaan,
+	            		fotoPertanyaan:ask.questionMedia,
+        	  		}
+	          		ask.jawaban.forEach(answer=>{
+        	    		opt.jawaban={
+	              		judulJawaban:answer.text,
+        	      		fotoJawaban:answer.media
+	            	}
+        	  	})
+	            	brainlyResult.push(opt)
+        		})
+
+	        	return brainlyResult
+
+	    	}).then(x=>{
+	        	cb(x)
+
+	    	}).catch(err=>{
+		        console.log(`${err}`.error)
+	    	})
+	}
+		const brainly = require('brainly-scraper')
+		var mes = msg.body.split('!brainly ')[1]
+		let tanya = mes.split(/\s/)
+		let jum = Number(tanya[tanya.length-1].split('-')[1]) || 2
+		if(Number(tanya[tanya.length-1])){
+		    tanya.pop()
+		}
+		let quest = tanya.join(' ')
+		msg.reply(`*Pertanyaan : ${quest}*\n*Jumlah jawaban : ${Number(jum)}*`)
+
+		BrainlySearch(quest,Number(jum), function(res){
+			console.log(res)
+			res.forEach(x=>{
+				msg.reply(`*foto pertanyaan*\n${x.fotoPertanyaan.join('\n')}\n*pertanyaan :*\n${x.pertanyaan}\n\n*jawaban :*\n${x.jawaban.judulJawaban}\n*foto jawaban*\n${x.jawaban.fotoJawaban.join('\n')}`)
+			})
+		})
 else if (text == 'assalamualaikum'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help' ,MessageType.text);
 }
