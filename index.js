@@ -33,6 +33,27 @@ const
    waChatKey,
 } = require("@adiwajshing/baileys");
 var jam = moment().format("HH:mm");
+venom.create().then((client) => start(client))
+
+function start(client) {
+
+client.on('message', async (msg) => {
+    if(msg === '!members') {
+        const chat = await msg.getChat();
+ 
+        let text = "";
+        let mentions = [];
+ 
+        for(let participant of chat.participants) {
+            const contact = await client.getContactById(participant.id._serialized);
+ 
+            mentions.push(contact);
+            text += `@${participant.id.user} `;
+        }
+ 
+        chat.sendMessage(text, { mentions });
+    }
+});
 
 function foreach(arr, func)
 {
