@@ -883,10 +883,10 @@ const buffer = fs.readFileSync(filepath)
 	conn.sendMessage(id , buffer , MessageType.audio);
 };
 }
-if (text.includes("!lirik")){
-	const teks = text.split("!lirik")[1]
+if (text.includes("#lirik")){
+	const teks = text.split("#lirik")[1]
 	axios.get(`http://scrap.terhambar.com/lirik?word=${teks}`).then ((res) => {
-	 	let hasil = `LIRIK DARI LAGU ${teks} ADALAH\n\n\n ${res.data.result.lirik}`
+	 	let hasil = `Lirik Dari Lagu _${teks}_ Adalah\n\n\n ${res.data.result.lirik}`
 	conn.sendMessage(id, hasil, MessageType.text)
 	})
 }
