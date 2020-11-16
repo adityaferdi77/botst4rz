@@ -188,7 +188,7 @@ axios.get(`https://st4rz.herokuapp.com/api/wiki?q=${teks}`).then((res) => {
 if (text.includes("#sholat")){
   const teks = text.replace(/#sholat /, "")
   axios.get(`https://mhankbarbar.herokuapp.com/api/jadwalshalat?daerah=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then ((res) =>{
-  let hasil = `*Jadwal Sholat di ${teks} Hari Ini :*\n\n┌   *Imsyak :* _${res.data.Imsyak} WIB_\n├   *Subuh :* _${res.data.Subuh} WIB\n├   *Dzuhur :* _${res.data.Dzuhur} WIB_\n├   *Ashar :* _${res.data.Ashar} WIB_\n├   *Maghrib :* _${res.data.Maghrib} WIB_\n├   *Isya :* _${res.data.Isya} WIB_\n└   *Tengah malam :* _${res.data.Dhuha} WIB_`;
+  let hasil = `*Jadwal Sholat di ${teks} Hari Ini :*\n\n┌   *Imsyak :* _${res.data.Imsyak} WIB_\n├   *Subuh :* _${res.data.Subuh} WIB_\n├   *Dzuhur :* _${res.data.Dzuhur} WIB_\n├   *Ashar :* _${res.data.Ashar} WIB_\n├   *Maghrib :* _${res.data.Maghrib} WIB_\n├   *Isya :* _${res.data.Isya} WIB_\n└   *Tengah malam :* _${res.data.Dhuha} WIB_`;
   conn.sendMessage(id, hasil, MessageType.text);
 })
 }
