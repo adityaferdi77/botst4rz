@@ -520,6 +520,25 @@ conn.sendMessage(id, info.info(id, BotName, corohelp, tampilTanggal, tampilWaktu
 else if (text == '#ptl'){
 conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType.text);
 }
+
+  // Optical Character Recognition
+  if (messageType == 'imageMessage')
+   {
+       let caption = imageMessage.caption.toLocaleLowerCase()
+       if (caption == '!ocr')
+       {
+           const img = await conn.downloadAndSaveMediaMessage(m)
+           readTextInImage(img)
+               .then(data => {
+                   console.log(data)
+                   conn.sendMessage(id, `*Read Data Text in Image* \n\nHasil: \n\n${data}`, MessageType.text);
+               })
+               .catch(err => {
+                   console.log(err)
+               })
+       }
+   }
+
    if (messageType == 'imageMessage')
    {
       let caption = imageMessage.caption.toLocaleLowerCase()
@@ -720,7 +739,6 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
       console.log(""+ h);
       conn.sendMessage(id,
             `
-      Halo *${id.split("@s.whatsapp.net")[0]}*
       Arti dari namamu adalah
 
   ***********************************
@@ -890,7 +908,13 @@ if (text.includes("#lirik")){
 	conn.sendMessage(id, hasil, MessageType.text)
 	})
 }
-
+if (text.includes("#alay")){
+	const alay = text.split("#alay")[1]
+	axios.get(`https://api.terhambar.com/bpk?kata=${alay}`).then ((res) =>
+		{ let hasil = `${res.data.text}`
+		conn.sendMessage(id, hasil, MessageType.text)
+	})
+}
 
 
 
