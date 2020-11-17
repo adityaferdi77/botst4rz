@@ -14,7 +14,7 @@ const info = require("./lib/info.js");
 //
 const BotName = 'DANTOD'; // Nama Bot Whatsapp
 const instagramlu = 'instagram.com/dani.rknt'; // Nama Instagramlu cok
-const whatsapplu = '0857-3034-3064'; // Nomor whatsapplu cok
+const whatsapplu = 'wa.me/085730343064'; // Nomor whatsapplu cok
 const kapanbotaktif = 'gak nentu'; // Kapan bot lu aktif
 const grupch1 = 'https://chat.whatsapp.com/FnzgW2IuAKI2mgb9oD1CUU'; // OFFICIAL GRUP LU 1
 const grupch2 = ''; // OFFICIAL GRUP LU 2
@@ -525,7 +525,7 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
   if (messageType == 'imageMessage')
    {
        let caption = imageMessage.caption.toLocaleLowerCase()
-       if (caption == '!ocr')
+       if (caption == '#ocr')
        {
            const img = await conn.downloadAndSaveMediaMessage(m)
            readTextInImage(img)
@@ -904,7 +904,7 @@ const buffer = fs.readFileSync(filepath)
 if (text.includes("#lirik")){
 	const teks = text.split("#lirik")[1]
 	axios.get(`http://scrap.terhambar.com/lirik?word=${teks}`).then ((res) => {
-	 	let hasil = `Lirik Dari Lagu _${teks}_ Adalah\n\n\n ${res.data.result.lirik}`
+	 	let hasil = `Lirik Lagu${teks}\n\n\n ${res.data.result.lirik}`
 	conn.sendMessage(id, hasil, MessageType.text)
 	})
 }
