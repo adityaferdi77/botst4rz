@@ -118,7 +118,7 @@ const gtts = (`https://rest.farzain.com/api/tts.php?id=${teks}&apikey=O8mUD3YrHI
 
 if (text.includes("/say")){
   const teks = text.replace(//say /, "")
-conn.sendMessage(id, teks, MessageType.text)
+conn.sendMessage(id, teks, MessageType.text);
 }
 
 if (text.includes("#nulis")){
