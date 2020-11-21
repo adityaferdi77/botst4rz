@@ -749,7 +749,7 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
  MessageType.text);
   });
   }
-  else if (text.includes("#pasangan ")) {
+else if (text.includes("#pasangan ")) {
     const request = require('request');
     var gh = text.split("#pasangan ")[1];
     var namamu = gh.split("&")[0];
@@ -781,7 +781,6 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
     `, MessageType.text);
   });
   }
-
    if (text.includes("#ptl cewek"))
    {
     var items = ["ullzang girl", "cewe cantik", "hijab cantik", "korean girl"];
