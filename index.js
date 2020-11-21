@@ -116,8 +116,8 @@ const gtts = (`https://rest.farzain.com/api/tts.php?id=${teks}&apikey=O8mUD3YrHI
     conn.sendMessage(id, gtts ,MessageType.text);
 }
 
-if (text.includes("/say")){
-  const teks = text.replace(//say /, "")
+if (text.includes("#say")){
+  const teks = text.replace(/#say /, "")
 conn.sendMessage(id, teks, MessageType.text);
 }
 
