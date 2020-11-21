@@ -730,8 +730,8 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
         headers: {'content-type' : 'application/x-www-form-urlencoded'},
         url:     'http://www.primbon.com/arti_nama.php?nama1='+ req +'&proses=+Submit%21+',
       },function(error, response, body){
-          let # = cheerio.load(body);
-          var y = #.html().split('arti:')[1];
+          let $ = cheerio.load(body);
+          var y = $.html().split('arti:')[1];
           var t = y.split('method="get">')[1];
           var f = y.replace(t ," ");
           var x = f.replace(/<br\s*[\/]?>/gi, "\n");
@@ -763,8 +763,8 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
         url:     'http://www.primbon.com/kecocokan_nama_pasangan.php?nama1='+ namamu +'&nama2='+ pasangan +'&proses=+Submit%21+',
 
     },function(error, response, body){
-        let # = cheerio.load(body);
-      var y = #.html().split('<b>KECOCOKAN JODOH BERDASARKAN NAMA PASANGAN</b><br><br>')[1];
+        let $ = cheerio.load(body);
+      var y = $.html().split('<b>KECOCOKAN JODOH BERDASARKAN NAMA PASANGAN</b><br><br>')[1];
         var t = y.split('.<br><br>')[1];
         var f = y.replace(t ," ");
         var x = f.replace(/<br\s*[\/]?>/gi, "\n");
