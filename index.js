@@ -14,7 +14,7 @@ const info = require("./lib/info.js");
 //
 const BotName = 'DANTOD'; // Nama Bot Whatsapp
 const instagramlu = 'instagram.com/dani.rknt'; // Nama Instagramlu cok
-const whatsapplu = 'wa.me/085730343064'; // Nomor whatsapplu cok
+const whatsapplu = 'wa.me/6285730343064'; // Nomor whatsapplu cok
 const kapanbotaktif = 'gak nentu'; // Kapan bot lu aktif
 const grupch1 = 'https://chat.whatsapp.com/FnzgW2IuAKI2mgb9oD1CUU'; // OFFICIAL GRUP LU 1
 const grupch2 = ''; // OFFICIAL GRUP LU 2
@@ -110,14 +110,14 @@ console.log(exists);
 conn.sendMessage(id ,`${gg} ${exists ? " exists " : " does not exist"} on WhatsApp`, MessageType.text)
 }
 
-if (text.includes("#tts")){
-const teks = text.replace(/#tts /, "")
+if (text.includes("/tts")){
+const teks = text.replace(//tts /, "")
 const gtts = (`https://rest.farzain.com/api/tts.php?id=${teks}&apikey=O8mUD3YrHIy9KM1fMRjamw8eg`)
     conn.sendMessage(id, gtts ,MessageType.text);
 }
 
-if (text.includes("#say")){
-  const teks = text.replace(/#say /, "")
+if (text.includes("/say")){
+  const teks = text.replace(//say /, "")
 conn.sendMessage(id, teks, MessageType.text)
 }
 
@@ -878,8 +878,8 @@ scdl.setClientID("iZIs9mchVcX5lhVRyQGGAYlNPVldzAoX");
 scdl("https://m.soundcloud.com/abdul-muttaqin-701361735/lucid-dreams-gustixa-ft-vict-molina")
     .pipe(fs.createWriteStream("mp3/song.mp3"));
 }
- else if (text.includes("#tts")) {
-  var teks = text.split("#ttsid ")[1];
+ else if (text.includes("/tts")) {
+  var teks = text.split("/ttsid ")[1];
   var path = require('path');
   var text1 = teks.slice(6);
   text1 = suara;
