@@ -12,7 +12,7 @@ const menu = require("./lib/menu.js");
 const donate = require("./lib/donate.js");
 const info = require("./lib/info.js");
 //
-const BotName = 'DANTOD'; // Nama Bot Whatsapp
+const BotName = 'D Λ N T O D'; // Nama Bot Whatsapp
 const instagramlu = 'instagram.com/dani.rknt'; // Nama Instagramlu cok
 const whatsapplu = 'wa.me/6285730343064'; // Nomor whatsapplu cok
 const kapanbotaktif = 'gak nentu'; // Kapan bot lu aktif
