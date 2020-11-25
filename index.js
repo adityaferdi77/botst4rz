@@ -121,12 +121,18 @@ if (text.includes("#say")){
 conn.sendMessage(id, teks, MessageType.text);
 }
 
-if (text.includes("#nulis")){
-  const teks = text.replace(/#nulis /, "")
-axios.get(`https://st4rz.herokuapp.com/api/nulis?text=${teks}`).then((res) => {
-    let hasil = `Download sendiri ya hasilnya dibawah, soalnya kalo dikirim langsung hasilnya blur\n\n${res.data.result.data}`;
-    conn.sendMessage(id, hasil ,MessageType.text);
-})
+if (text.includes('#nulis')){
+  var teks = text.replace(/#nulis /, '')
+    axios.get('https://bangandre.herokuapp.com/nulis?teks='+teks)
+    .then((res) => {
+      imageToBase64(res.data.result)
+        .then(
+          (ress) => {
+            conn.sendMessage(id, '[WAIT]...❗', MessageType.text)
+            var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
 }
 
 if (text.includes("#ytmp3")){
@@ -136,6 +142,34 @@ axios.get(`http://scrap.terhambar.com/yt?link=${teks}`).then((res) => {
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
+
+if (text.includes("#infoig")){
+  const teks = text.replace(/#infoig /, "")
+  axios.get(`https://st4rz.herokuapp.com/api/stalk?username=${teks}`).then ((res) =>{
+  conn.sendMessage(id, '[WAIT]...⏳', MessageType.text)
+  let hasil = `BIODATA INSTAGRAM ATAS NAMA _${teks}_ \n\n *Username✍️* : _${res.data.Username}_ \n *Nama✍️* : _${res.data.Name}_ \n *Jumlah Followers✍️* : _${res.data.Jumlah_Followers}_ \n *Jumlah_Following✍️* : _${res.data.Jumlah_Following}_ \n *Jumlah_Post✍️* : _${res.data.Jumlah_Post}_ `;
+  conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#infogempa")){
+  const teks = text.replace(/#infogempa /, "")
+  axios.get(`https://st4rz.herokuapp.com/api/infogempa`).then ((res) =>{
+  conn.sendMessage(id, '[WAIT]...⏳', MessageType.text)
+  let hasil = ` *INFO GEMPA* \n\ *Lokasi* : _${res.data.lokasi}_ \n *Kedalaman✍️* : _${res.data.kedalaman}_ \n *Koordinat✍️* : _${res.data.koordinat}_ \n *Magnitude✍️* : _${res.data.magnitude}_ \n *Waktu✍️* : _${res.data.waktu}_ `;
+  conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#chord")){
+const teks = text.replace(/#chord /, "")
+axios.get(`https://st4rz.herokuapp.com/api/chord?q=${teks}`).then((res) => {
+	conn.sendMessage(id, '[WAIT] Searching...⏳', MessageType.text)
+    let hasil = `*Nih Cord Lagu ${teks} kak* \n\nCord: _${res.data.result}_ `;
+    conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
 
 if (text.includes("#tiktok")) {
 const tictoc = text.replace(/#tiktok /, "")
@@ -181,6 +215,15 @@ if (text.includes("#wiki")){
 const teks = text.replace(/#wiki /, "")
 axios.get(`https://st4rz.herokuapp.com/api/wiki?q=${teks}`).then((res) => {
     let hasil = `Menurut Wikipedia:\n\n${res.data.result}`;
+    conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
+if (text.includes("#namaninja")){
+const teks = text.replace(/#namaninja /, "")
+axios.get(`https://api.terhambar.com/ninja?nama=${teks}`).then((res) => {
+	conn.sendMessage(id, '[WAIT] Searching...❗', MessageType.text)
+    let hasil = `Nama Ninja:\n\n${res.message.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -720,45 +763,6 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
 
    }
 
-
-     if (text.includes("#nulis"))
-   {
-
-      const
-      {
-         spawn
-      } = require("child_process");
-      console.log("writing...")
-      const teks = text.replace(/#nulis/, "")
-      const split = teks.replace(/(\S+\s*){1,10}/g, "$&\n")
-      const fixedHeight = split.split("\n").slice(0, 25).join("\\n")
-      console.log(split)
-      spawn("convert", [
-            "./assets/paper.jpg",
-            "-font",
-            "Indie-Flower",
-            "-size",
-            "700x960",
-            "-pointsize",
-            "18",
-            "-interline-spacing",
-            "3",
-            "-annotate",
-            "+170+222",
-            fixedHeight,
-            "./assets/result.jpg"
-         ])
-         .on("error", () => console.log("error"))
-         .on("exit", () =>
-         {
-            const buffer = fs.readFileSync("assets/result.jpg") // can send mp3, mp4, & ogg -- but for mp3 files the mimetype must be set to ogg
-
-            conn.sendMessage(id, buffer, MessageType.image)
-            console.log("done")
-         })
-   }
-
-
    if (text.includes("#quotes"))
    {
       var url = 'https://jagokata.com/kata-bijak/acak.html'
@@ -781,6 +785,95 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
 
          });
    }
+
+   if (text.includes("#hentai"))
+   {
+    var items = ["nsfwneko","anime hentai"];
+    var anim = items[Math.floor(Math.random() * items.length)];
+    var url = "https://api.computerfreaker.cf/v1/";
+    
+    axios.get(url)
+      .then((result) => {
+        var b = JSON.parse(JSON.stringify(result.data));
+        var anim =  b[Math.floor(Math.random() * b.length)];
+        imageToBase64(anim) // Path to the image
+        .then(
+            (response) => {
+	var buf = Buffer.from(response, 'base64'); // Ta-da	
+              conn.sendMessage(
+            id,
+              buf,MessageType.image)
+       
+            }
+        )
+        .catch(
+            (error) => {
+                console.log(error); // Logs an error if there was one
+            }
+        )
+    
+    });
+    }
+
+
+   if (text.includes("#loli"))
+   {
+    var items = ["anime loli","anime loli sange","anime loli fackgirll","anime loli i love you"];
+    var nime = items[Math.floor(Math.random() * items.length)];
+    var url = "https://api.fdci.se/rep.php?gambar=" + nime;
+    
+    axios.get(url)
+      .then((result) => {
+        var n = JSON.parse(JSON.stringify(result.data));
+        var nimek =  n[Math.floor(Math.random() * n.length)];
+        imageToBase64(nimek) 
+        .then(
+            (response) => {
+	var buf = Buffer.from(response, 'base64'); 
+              conn.sendMessage(
+            id,
+              buf,MessageType.image)
+       
+            }
+        )
+        .catch(
+            (error) => {
+                console.log(error);
+            }
+        )
+    
+    });
+    }
+
+if (text.includes("#pokemon"))
+   {
+    var items = ["anime pokemon"];
+    var nime = items[Math.floor(Math.random() * items.length)];
+    var url = "https://api.fdci.se/rep.php?gambar=" + nime;
+    
+    axios.get(url)
+      .then((result) => {
+        var n = JSON.parse(JSON.stringify(result.data));
+        var nimek =  n[Math.floor(Math.random() * n.length)];
+        imageToBase64(nimek) 
+        .then(
+            (response) => {
+	var buf = Buffer.from(response, 'base64'); 
+              conn.sendMessage(
+            id,
+              buf,MessageType.image)
+       
+            }
+        )
+        .catch(
+            (error) => {
+                console.log(error);
+            }
+        )
+    
+    });
+    }
+
    else if (text.includes("#nama ")) 
   {
     const cheerio = require('cheerio');
