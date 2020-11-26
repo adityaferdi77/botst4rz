@@ -143,15 +143,6 @@ axios.get(`http://scrap.terhambar.com/yt?link=${teks}`).then((res) => {
 })
 }
 
-if (text.includes("#infoig")){
-  const teks = text.replace(/#infoig /, "")
-  axios.get(`https://st4rz.herokuapp.com/api/stalk?username=${teks}`).then ((res) =>{
-  conn.sendMessage(id, '[WAIT]...⏳', MessageType.text)
-  let hasil = `BIODATA INSTAGRAM ATAS NAMA _${teks}_ \n\n *Username✍️* : _${res.data.Username}_ \n *Nama✍️* : _${res.data.Name}_ \n *Jumlah Followers✍️* : _${res.data.Jumlah_Followers}_ \n *Jumlah_Following✍️* : _${res.data.Jumlah_Following}_ \n *Jumlah_Post✍️* : _${res.data.Jumlah_Post}_ `;
-  conn.sendMessage(id, hasil, MessageType.text);
-})
-}
-
 if (text.includes("#infogempa")){
   const teks = text.replace(/#infogempa /, "")
   axios.get(`https://st4rz.herokuapp.com/api/infogempa`).then ((res) =>{
@@ -192,6 +183,95 @@ const teks = text.replace(/#fb /, "")
 axios.get(`https://mhankbarbar.herokuapp.com/api/epbe?url=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
     let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nJudul: ${res.data.title}\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
+if (text.includes("#igstalk")){
+const sons = text.replace(/#igstalk /, "")
+axios.get(`https://st4rz.herokuapp.com/api/stalk?username=${sons}`).then ((res) =>{
+let hasil = `_*STALK IG*_\n*➸Username* : ${res.data.Username}\n*➸Nama* : ${res.data.Name}\n*➸Follower* : ${res.data.Jumlah_Followers}\n*➸Followed* : ${res.data.Jumlah_Following}\n*➸Jumlah_Postingan* : ${res.data.Jumlah_Post}\n*➸Biodata* : ${res.data.Biodata}\n*_________________________________________*\n\n*➸Profile* : ${res.data.Profile_pic}`;
+conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
+if (text.includes("#cuaca ")){
+const teks = text.replace(/#cuaca /, "")
+axios.get(`https://mhankbarbar.herokuapp.com/api/cuaca?q=${teks}&apiKey=IsDssiTLL9hE7ofCV1Ot`).then ((res) =>{
+conn.sendMessage(id, `🍻 Permintaan anda sedang di proses, ditunggu aja gan.` ,MessageType.text)
+let hasil =`➸Tempat : ${res.data.result.tempat}\n\n➸Angin : ${res.data.result.angin}\n➸Cuaca : ${res.data.result.cuaca}\n➸Deskripsi : ${res.data.result.desk}\n➸Kelembapan : ${res.data.result.kelembapan}\n➸Suhu : ${res.data.result.suhu}\n➸Udara : ${res.data.result.udara}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#seberapagay")){
+const teks = text.replace(/#seberapagay /, "")
+axios.get(`https://arugaz.herokuapp.com/api/howgay`).then((res) =>{
+let hasil = `Pertanyaan :seberapagay ${teks}\n\n*➸Jawaban* : ${res.data.persen}%`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#simi")){
+const teks = text.replace(/#simi /, "")
+axios.get(`https://st4rz.herokuapp.com/api/simsimi?kata=${teks}`).then((res) =>{
+let hasil = `${res.data.result}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#jadwaltvnow")){
+const teks = text.replace(/#jadwaltvnow /, "")
+axios.get(`https://api.haipbis.xyz/jadwaltvnow`).then((res) =>{
+let hasil = `*JAM* : ${res.data.jam}\n*JadwalTV* :\n*______________________________________________________* \n${res.data.jadwalTV}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#bitly")){
+const teks = text.replace(/#bitly /, "")
+axios.get(`https://api.haipbis.xyz/bitly?url=${teks}`).then((res) => {
+let hasil = `*Hasil* : ${res.data.result}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#spamcall")){
+const teks = text.replace(/#spamcall /, "")
+axios.get(`https://arugaz.herokuapp.com/api/spamcall?no=${teks}`).then((res) =>{
+let hasil = `*➸Status* : ${res.data.logs}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#Covidcountry")){
+const teks = text.replace(/#Covidcountry /, "")
+axios.get(`https://arugaz.herokuapp.com/api/corona?country=${teks}`).then((res) =>{
+let hasil = `*➸Country* : ${res.data.result.country}\n\n*➸Active* : ${res.data.result.active}\n*➸Critical* : ${res.data.result.critical}\n*➸Recovered* : ${res.data.result.recovered}\n*➸Today Cases* : ${res.data.result.todayCases}\n*➸Today Death* : ${res.data.result.todayDeath}\n*➸Total Cases* : ${res.data.result.totalCases}\n*➸Total Death* : ${res.data.result.totalDeath}\n*➸Total Test* : ${res.data.result.totalTest}\n*➸Test PerOne Milion* : ${res.data.result.testPerOneMillion}\n*➸Deaths Per One Milion* : ${res.data.result.deathsPerOneMillion}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#zodiak")){
+const teks = text.replace(/#zodiak /, "")
+axios.get(`https://arugaz.herokuapp.com/api/getzodiak?nama=aruga&tgl-bln-thn=${teks}`).then((res) => {
+let hasil = `*Lahir* : ${res.data.lahir}\n*Ulang Tahun* : ${res.data.ultah}\n*Usia* : ${res.data.usia}\n*Zodiak* : ${res.data.zodiak}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#textimage")){
+const teks = text.replace(/#textimage /, "")
+axios.get(`https://mhankbarbar.herokuapp.com/api/text2image?text=${teks}&apiKey=IsDssiTLL9hE7ofCV1Ot`).then((res) => {
+let hasil = `Teks image telah tersedia klik link dibawah\n\n*HASIL* : ${res.data.result}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#seberapabucin")){     
+const teks = text.replace(/#seberapabucin /, "")
+axios.get(`https://arugaz.herokuapp.com/api/howbucins`).then((res) =>{
+let hasil = `*➸Persen* : ${res.data.persen}%\n*➸Deskripsi* : ${res.data.desc}`
+conn.sendMessage(id, hasil, MessageType.text); 
 })
 }
 
@@ -418,6 +498,9 @@ conn.sendMessage(id, 'Sama sama, semoga harimu menyenangkan :)' ,MessageType.tex
 else if (text == 'Makasi'){
 conn.sendMessage(id, 'Sama sama, semoga harimu menyenangkan :)' ,MessageType.text);
 }
+else if (text == `#hentai`){
+conn.sendMessage(id , `*Selamat datang Di fitur hentai*\n\n*-------------------------------------------------*\n ⃝⃔Nekopoi\nhttp://nekopoi.care\n\n ⃝⃔Animeidhentai\nhttp://animeidhentai.com\n\n ⃝⃔kisshentai\nhttp://kisshentai.com\n\n ⃝⃔h-anime\nhttp://h-anime.com\n\n ⃝⃔Hentaipulse\nhttp://hentaipulse.com\n\n ⃝⃔hentaimama\nhttp://hentaimama.com\n\n ⃝⃔miniopai\nhttp://minioppai.org\n\n ⃝⃔yandex\nhttps://yandex.com\n\nJika Mau Memakai salah satu website silahkan Gunakan *VPN* terlebih dahulu` ,MessageType.text)
+conn.sendMessage(id, `*Dosa Di Tanggung Sendiri Owner Tidak Ikut Campur*` ,MessageType.text);
 else if (text == 'makasih'){
 conn.sendMessage(id, 'Sama sama, semoga harimu menyenangkan :)' ,MessageType.text);
 }
