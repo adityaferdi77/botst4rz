@@ -203,6 +203,23 @@ conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
+if (text.includes("#faktaunik")){
+const fetch = require("node-fetch");
+fetch('https://raw.githubusercontent.com/pajaar/grabbed-results/master/pajaar-2020-fakta-unik.txt').then(res =>                             res.text()).then(body => {
+  let brpr = body.split("\n");
+  let hgq = brpr[Math.floor(Math.random() * brpr.length)];
+  conn.sendMessage(id, hgq , MessageType.text);
+  });
+}
+
+if (text.includes("#bapakfont")){
+const teks = text.replace(/#bapakfont /, "")
+axios.get(`https://arugaz.herokuapp.com/api/bapakfont?kata=${teks}`).then((res) =>{
+let hasil = `${res.data.teks}`
+conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
 if (text.includes("#seberapagay")){
 const teks = text.replace(/#seberapagay /, "")
 axios.get(`https://arugaz.herokuapp.com/api/howgay`).then((res) =>{
