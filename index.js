@@ -518,6 +518,7 @@ conn.sendMessage(id, 'Sama sama, semoga harimu menyenangkan :)' ,MessageType.tex
 else if (text == `#hentai`){
 conn.sendMessage(id , `*Selamat datang Di fitur hentai*\n\n*-------------------------------------------------*\n ⃝⃔Nekopoi\nhttp://nekopoi.care\n\n ⃝⃔Animeidhentai\nhttp://animeidhentai.com\n\n ⃝⃔kisshentai\nhttp://kisshentai.com\n\n ⃝⃔h-anime\nhttp://h-anime.com\n\n ⃝⃔Hentaipulse\nhttp://hentaipulse.com\n\n ⃝⃔hentaimama\nhttp://hentaimama.com\n\n ⃝⃔miniopai\nhttp://minioppai.org\n\n ⃝⃔yandex\nhttps://yandex.com\n\nJika Mau Memakai salah satu website silahkan Gunakan *VPN* terlebih dahulu` ,MessageType.text)
 conn.sendMessage(id, `*Dosa Di Tanggung Sendiri Owner Tidak Ikut Campur*` ,MessageType.text);
+}
 else if (text == 'makasih'){
 conn.sendMessage(id, 'Sama sama, semoga harimu menyenangkan :)' ,MessageType.text);
 }
