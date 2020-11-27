@@ -869,7 +869,7 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
          });
    }
 
-   if (text.includes("#hentai"))
+   if (text.includes("#randomhentai"))
    {
     var items = ["nsfwneko","anime hentai"];
     var anim = items[Math.floor(Math.random() * items.length)];
