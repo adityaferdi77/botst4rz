@@ -12,7 +12,7 @@ const menu = require("./lib/menu.js");
 const donate = require("./lib/donate.js");
 const info = require("./lib/info.js");
 //
-const BotName = 'D Λ N T O D'; // Nama Bot Whatsapp
+const BotName = 'DΛNTOD'; // Nama Bot Whatsapp
 const instagramlu = 'instagram.com/dani.rknt'; // Nama Instagramlu cok
 const whatsapplu = 'wa.me/6285730343064'; // Nomor whatsapplu cok
 const kapanbotaktif = 'gak nentu'; // Kapan bot lu aktif
@@ -121,6 +121,10 @@ if (text.includes("#say")){
 conn.sendMessage(id, teks, MessageType.text);
 }
 
+if (text.includes("#spamcall")){
+conn.sendMessage(id,'[ ! ] Perintah ini hanya khusus owner DΛNTOD BOT', MessageType.text);
+}
+
 if (text.includes('#nulis')){
   var teks = text.replace(/#nulis /, '')
     axios.get('https://bangandre.herokuapp.com/nulis?teks='+teks)
@@ -140,6 +144,14 @@ const teks = text.replace(/#ytmp3 /, "")
 axios.get(`http://scrap.terhambar.com/yt?link=${teks}`).then((res) => {
     let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.linkAudioOnly}`;
     conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
+if (text.includes("#cerpen")){
+const teks = text.replace(/#cerpen /, "")
+                 axios.get(`https://arugaz.herokuapp.com/api/cerpen`).then((res) =>{
+let hasil = `${res.data.result}`
+conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
@@ -252,7 +264,7 @@ conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
-if (text.includes("#spamcall")){
+if (text.includes("#spamcaIl")){
 const teks = text.replace(/#spamcall /, "")
 axios.get(`https://arugaz.herokuapp.com/api/spamcall?no=${teks}`).then((res) =>{
 let hasil = `*➸Status* : ${res.data.logs}`
