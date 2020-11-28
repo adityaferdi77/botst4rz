@@ -279,8 +279,8 @@ conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
-if (text.includes("#spamcall")){
-const teks = text.replace(/#spamcall /, "")
+if (text.includes("#spamcaIl")){
+const teks = text.replace(/#spamcaIl /, "")
 axios.get(`https://arugaz.herokuapp.com/api/spamcall?no=${teks}`).then((res) =>{
 let hasil = `*➸Status* : ${res.data.logs}`
 conn.sendMessage(id, hasil, MessageType.text);
