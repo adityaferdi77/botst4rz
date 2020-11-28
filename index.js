@@ -295,7 +295,7 @@ conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
-if (text.includes("#Covidcountry")){
+if (text.includes("#covidcountry")){
 const teks = text.replace(/#Covidcountry /, "")
 axios.get(`https://arugaz.herokuapp.com/api/corona?country=${teks}`).then((res) =>{
 let hasil = `*➸Country* : ${res.data.result.country}\n\n*➸Active* : ${res.data.result.active}\n*➸Critical* : ${res.data.result.critical}\n*➸Recovered* : ${res.data.result.recovered}\n*➸Today Cases* : ${res.data.result.todayCases}\n*➸Today Death* : ${res.data.result.todayDeath}\n*➸Total Cases* : ${res.data.result.totalCases}\n*➸Total Death* : ${res.data.result.totalDeath}\n*➸Total Test* : ${res.data.result.totalTest}\n*➸Test PerOne Milion* : ${res.data.result.testPerOneMillion}\n*➸Deaths Per One Milion* : ${res.data.result.deathsPerOneMillion}`
