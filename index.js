@@ -351,6 +351,14 @@ axios.get(`https://arugaz.herokuapp.com/api/wiki?q=${teks}`).then((res) => {
 })
 }
 
+if (text.includes("#wiki en")){
+const teks = text.replace(/#wiki en/, "")
+axios.get(`https://arugaz.herokuapp.com/api/wikien?q=${teks}`).then((res) => {
+    let hasil = `According to Wikipedia:\n\n${res.data.result}`;
+    conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
 if (text.includes("#namaninja")){
 const teks = text.replace(/#namaninja /, "")
 axios.get(`https://api.terhambar.com/ninja?nama=${teks}`).then((res) => {
