@@ -295,6 +295,14 @@ conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
+if (text.includes("#spamgmail")){
+const teks = text.replace(/#spamgmail /, "")
+axios.get(`https://arugaz.herokuapp.com/api/spamgmail?target=${teks}&jum=3`).then((res) =>{
+let hasil = `*➸Status* : ${res.data.logs}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
 if (text.includes("#covidcountry")){
 const teks = text.replace(/#Covidcountry /, "")
 axios.get(`https://arugaz.herokuapp.com/api/corona?country=${teks}`).then((res) =>{
