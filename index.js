@@ -242,7 +242,7 @@ fetch('https://raw.githubusercontent.com/pajaar/grabbed-results/master/pajaar-20
 if (text.includes("#bapakfont")){
 const teks = text.replace(/#bapakfont /, "")
 axios.get(`https://arugaz.herokuapp.com/api/bapakfont?kata=${teks}`).then((res) =>{
-let hasil = `${res.data.teks}`
+let hasil = `${res.data.result}`
 conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
