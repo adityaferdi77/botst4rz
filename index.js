@@ -279,7 +279,7 @@ conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
-if (text.includes("#spamcaIl")){
+if (text.includes("#spamcall")){
 const teks = text.replace(/#spamcall /, "")
 axios.get(`https://arugaz.herokuapp.com/api/spamcall?no=${teks}`).then((res) =>{
 let hasil = `*➸Status* : ${res.data.logs}`
@@ -289,7 +289,7 @@ conn.sendMessage(id, hasil, MessageType.text);
 
 if (text.includes("#spamsms")){
 const teks = text.replace(/#spamsms /, "")
-axios.get(`https://arugaz.herokuapp.com/api/spamsms?no=${teks}`).then((res) =>{
+axios.get(`https://arugaz.herokuapp.com/api/spamsms?no=${teks}&jum=10`).then((res) =>{
 let hasil = `*➸Status* : ${res.data.logs}`
 conn.sendMessage(id, hasil, MessageType.text);
 })
