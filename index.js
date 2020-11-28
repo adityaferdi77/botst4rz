@@ -351,8 +351,8 @@ axios.get(`https://arugaz.herokuapp.com/api/wiki?q=${teks}`).then((res) => {
 })
 }
 
-if (text.includes("#wiki en")){
-const teks = text.replace(/#wiki en/, "")
+if (text.includes("#wikiEn")){
+const teks = text.replace(/#wikiEn/, "")
 axios.get(`https://arugaz.herokuapp.com/api/wikien?q=${teks}`).then((res) => {
     let hasil = `According to Wikipedia:\n\n${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
