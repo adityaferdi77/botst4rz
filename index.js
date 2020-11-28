@@ -173,9 +173,9 @@ conn.sendMessage(id, hasil, MessageType.text);
 
 if (text.includes("#infogempa")){
   const teks = text.replace(/#infogempa /, "")
-  axios.get(`https://st4rz.herokuapp.com/api/infogempa`).then ((res) =>{
+  axios.get(`https://arugaz.herokuapp.com/api/infogempa`).then ((res) =>{
   conn.sendMessage(id, '[WAIT]...⏳', MessageType.text)
-  let hasil = ` *INFO GEMPA* \n\ *Lokasi* : _${res.data.lokasi}_ \n *Kedalaman✍️* : _${res.data.kedalaman}_ \n *Koordinat✍️* : _${res.data.koordinat}_ \n *Magnitude✍️* : _${res.data.magnitude}_ \n *Waktu✍️* : _${res.data.waktu}_ `;
+  let hasil = ` *INFO GEMPA* \n\ *Lokasi* : _${res.data.lokasi}_ \n *Kedalaman* : _${res.data.kedalaman}_ \n *Koordinat* : _${res.data.koordinat}_ \n *Magnitude* : _${res.data.magnitude}_ \n *Map* : _${res.data.map}_ \n *Potensi* : _${res.data.potensi}_ \n *Waktu* : _${res.data.waktu}_ `;
   conn.sendMessage(id, hasil, MessageType.text);
 })
 }
