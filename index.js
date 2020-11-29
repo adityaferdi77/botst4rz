@@ -189,7 +189,7 @@ if (text.includes("#infogempa")){
 }
 
 if (text.includes("#nama")){
-  const teks = text.replace(/#teks /, "")
+  const teks = text.replace(/#nama /, "")
   axios.get(`https://arugaz.herokuapp.com/api/artinama?nama=${teks}`).then ((res) =>{
   let hasil = `*Arti Nama ${teks} \n\n ${res.data.result}`;
   conn.sendMessage(id, hasil, MessageType.text);
@@ -386,7 +386,7 @@ axios.get(`https://arugaz.herokuapp.com/api/wikien?q=${teks}`).then((res) => {
 if (text.includes("#namaninja")){
 const teks = text.replace(/#namaninja /, "")
 axios.get(`https://api.terhambar.com/ninja?nama=${teks}`).then((res) => {
-    let hasil = `Nama Ninja:\n\n ${res.data.result}`;
+    let hasil = `Nama Ninja:\n\n ${res.data.result.ninja}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
