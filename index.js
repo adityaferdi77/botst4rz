@@ -141,8 +141,8 @@ if (text.includes('#nulis')){
 
 if (text.includes("#ytmp3")){
 const teks = text.replace(/#ytmp3 /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/api/yta?url=${teks}&apiKey=IsDssiTLL9hE7ofCV1Ot}`).then((res) => {
-    let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.linkAudioOnly}`;
+axios.get(`https://alfians-api.herokuapp.com/api/yta?url=${teks}`).then((res) => {
+    let hasil = `Judul : ${res.data.title}\nSize: ${res.data.filesize}\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
