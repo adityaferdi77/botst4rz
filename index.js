@@ -217,7 +217,7 @@ conn.sendMessage(id, titoe, MessageType.text);
 if (text.includes("#yt")){
 const teks = text.replace(/#yt /, "")
 axios.get(`https://alfians-api.herokuapp.com/api/ytv?url=${teks}`).then((res) => {
-    let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.linkVideo}`;
+    let hasil = `Judul : ${res.data.title}\nResolusi : ${res.data.resolution}\nSize: ${res.data.filesize}\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
