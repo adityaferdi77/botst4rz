@@ -1213,6 +1213,13 @@ if (text.includes("#lirik")){
 	conn.sendMessage(id, hasil, MessageType.text)
 	})
 }
+if (text.includes("#sfilm")){
+	const teks = text.split("#sfilm")[1]
+	axios.get(`https://arugaz.herokuapp.com/api/sdmovie?film=${teks}`).then ((res) => {
+	 	let hasil = `Judul : ${res.data.result.title}\n Sinopsis : ${res.data.result.sinopsis}\n Rating : ${res.data.result.rating}\n Video : ${res.data.result.video}\n`
+	conn.sendMessage(id, hasil, MessageType.text)
+	})
+}
 if (text.includes("#alay")){
 	const alay = text.split("#alay")[1]
 	axios.get(`https://api.terhambar.com/bpk?kata=${alay}`).then ((res) =>
@@ -1220,7 +1227,6 @@ if (text.includes("#alay")){
 		conn.sendMessage(id, hasil, MessageType.text)
 	})
 }
-
 
 
 
