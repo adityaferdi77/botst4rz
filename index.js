@@ -275,7 +275,7 @@ conn.sendMessage(id, hasil, MessageType.text);
 if (text.includes("#simi")){
 const teks = text.replace(/#simi /, "")
 axios.get(`https://arugaz.herokuapp.com/api/simisimi?kata=${teks}&apikey=MTtIXzoIzkjL6XWTA6pQWu3qCvgu9_2My9f9w~3K`).then((res) =>{
-let hasil = `${res.data.pesan}`
+let hasil = `${res.data.result}`
 conn.sendMessage(id, hasil, MessageType.text);
 })
 }
