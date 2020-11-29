@@ -180,6 +180,15 @@ if (text.includes("#infogempa")){
 })
 }
 
+if (text.includes("#nama")){
+  const teks = text.replace(/#teks /, "")
+  axios.get(`https://arugaz.herokuapp.com/api/artinama?nama=${teks}`).then ((res) =>{
+  conn.sendMessage(id, '[WAIT]...⏳', MessageType.text)
+  let hasil = `*Arti Nama ${teks} \n\n${res.data.result}`;
+  conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
 if (text.includes("#chord")){
 const teks = text.replace(/#chord /, "")
 axios.get(`https://arugaz.herokuapp.com/api/chord?q=${teks}`).then((res) => {
@@ -1008,11 +1017,11 @@ if (text.includes("#pokemon"))
     });
     }
 
-   else if (text.includes("#nama ")) 
+   else if (text.includes("#na.ma ")) 
   {
     const cheerio = require('cheerio');
     const request = require('request');
-    var nama = text.split("#nama ")[1];
+    var nama = text.split("#na.ma ")[1];
     var req = nama.replace(/ /g,"+");
     request.get({
         headers: {'content-type' : 'application/x-www-form-urlencoded'},
