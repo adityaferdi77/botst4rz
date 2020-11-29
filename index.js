@@ -171,6 +171,14 @@ conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
+if (text.includes("#quotes")){
+const teks = text.replace(/#quotes /, "")
+                 axios.get(`https://arugaz.herokuapp.com/api/randomquotes`).then((res) =>{
+let hasil = `${res.data.result} \n\n _*${res.data.author}*_`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
 if (text.includes("#infogempa")){
   const teks = text.replace(/#infogempa /, "")
   axios.get(`https://arugaz.herokuapp.com/api/infogempa`).then ((res) =>{
@@ -906,7 +914,7 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
 
    }
 
-   if (text.includes("#quotes"))
+   if (text.includes("#quo.tes"))
    {
       var url = 'https://jagokata.com/kata-bijak/acak.html'
       axios.get(url)
