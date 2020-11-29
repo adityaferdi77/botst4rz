@@ -174,7 +174,7 @@ conn.sendMessage(id, hasil, MessageType.text);
 if (text.includes("#quotes")){
 const teks = text.replace(/#quotes /, "")
                  axios.get(`https://arugaz.herokuapp.com/api/randomquotes`).then((res) =>{
-let hasil = `${res.data.result} \n\n _*${res.data.author}*_`
+let hasil = `${res.data.quotes} \n\n _*${res.data.author}*_`
 conn.sendMessage(id, hasil, MessageType.text);
 })
 }
@@ -1209,7 +1209,7 @@ const buffer = fs.readFileSync(filepath)
 if (text.includes("#lirik")){
 	const teks = text.split("#lirik")[1]
 	axios.get(`https://arugaz.herokuapp.com/api/lirik?judul=${teks}`).then ((res) => {
-	 	let hasil = `Lirik Lagu${teks}\n\n\n ${res.data.result.lirik}`
+	 	let hasil = `Lirik Lagu${teks}\n\n\n ${res.data.result}`
 	conn.sendMessage(id, hasil, MessageType.text)
 	})
 }
