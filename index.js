@@ -232,8 +232,8 @@ axios.get(`https://alfians-api.herokuapp.com/api/ytv?url=${teks}`).then((res) =>
 
 if (text.includes("#fb")){
 const teks = text.replace(/#fb /, "")
-axios.get(`https://arugaz.herokuapp.com/api/fb?url=${teks}`).then((res) => {
-    let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nJudul: ${res.data.title}\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.result}`;
+axios.get(`https://mnazria.herokuapp.com/api/fbdownloadervideo?url=${teks}`).then((res) => {
+    let hasil = `*Hasil :*\n *HD :* ${res.data.resultHD} \n *SD :* ${res.data.resultSD}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -276,6 +276,22 @@ if (text.includes("#bapakfont")){
 const teks = text.replace(/#bapakfont /, "")
 axios.get(`https://arugaz.herokuapp.com/api/bapakfont?kata=${teks}`).then((res) =>{
 let hasil = `${res.data.result}`
+conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
+if (text.includes("#ssweb")){
+const teks = text.replace(/#ssweb /, "")
+axios.get(`https://mnazria.herokuapp.com/api/screenshotweb?url=${teks}`).then((res) =>{
+let hasil = `*Hasil :* \n ${res.data.gambar}`
+conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
+if (text.includes("#cekip")){
+const teks = text.replace(/#cekip /, "")
+axios.get(`https://mnazria.herokuapp.com/api/check?ip=${teks}`).then((res) =>{
+let hasil = `*IP :* \n ${res.data.ip} \n *Region :* ${res.data.region_name} \n *Region Code :* ${res.dataregion_code} \n *Country :* ${res.data.country_name \n *Country Code :* ${res.data.country_code} \n *Continent :* ${res.data.continent_name} \n *Continent Code :* ${res.data.continent_code} \n *City :* ${res.data.city} `
 conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
