@@ -191,7 +191,7 @@ if (text.includes("#infogempa")){
 if (text.includes("#nama")){
   const teks = text.replace(/#nama /, "")
   axios.get(`https://arugaz.herokuapp.com/api/artinama?nama=${teks}`).then ((res) =>{
-  let hasil = `*Arti Nama ${teks} \n\n ${res.data.result}`;
+  let hasil = `*Arti Nama ${teks}* \n\n ${res.data.result}`;
   conn.sendMessage(id, hasil, MessageType.text);
 })
 }
@@ -273,7 +273,15 @@ conn.sendMessage(id, hasil, MessageType.text);
 
 if (text.includes("#simi")){
 const teks = text.replace(/#simi /, "")
-axios.get(`https://arugaz.herokuapp.com/api/simisimi?kata=${teks}&apikey=MTtIXzoIzkjL6XWTA6pQWu3qCvgu9_2My9f9w~3K`).then((res) =>{
+axios.get(`https://arugaz.herokuapp.com/api/simisimi?kata=${teks}&apikey=e6OEI2n-KM_8.rBd0S3Ye6rWKwwTZd2lA1MP`).then((res) =>{
+let hasil = `[!] Fitur ini hanya khusus owner`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#sim")){
+const teks = text.replace(/#sim /, "")
+axios.get(`https://arugaz.herokuapp.com/api/simisimi?kata=${teks}&apikey=e6OEI2n-KM_8.rBd0S3Ye6rWKwwTZd2lA1ELMPim`).then((res) =>{
 let hasil = `${res.data.result}`
 conn.sendMessage(id, hasil, MessageType.text);
 })
@@ -1023,39 +1031,7 @@ if (text.includes("#pokemon"))
     });
     }
 
-   else if (text.includes("#na.ma ")) 
-  {
-    const cheerio = require('cheerio');
-    const request = require('request');
-    var nama = text.split("#na.ma ")[1];
-    var req = nama.replace(/ /g,"+");
-    request.get({
-        headers: {'content-type' : 'application/x-www-form-urlencoded'},
-        url:     'http://www.primbon.com/arti_nama.php?nama1='+ req +'&proses=+Submit%21+',
-      },function(error, response, body){
-          let $ = cheerio.load(body);
-          var y = $.html().split('arti:')[1];
-          var t = y.split('method="get">')[1];
-          var f = y.replace(t ," ");
-          var x = f.replace(/<br\s*[\/]?>/gi, "\n");
-          var h  = x.replace(/<[^>]*>?/gm, '');
-      console.log(""+ h);
-      conn.sendMessage(id,
-            `
-      Arti dari namamu adalah
 
-
-
-************************************
-
-         Nama _*${nama}*_ ${h}
-         
-************************************
-
-`,
- MessageType.text);
-  });
-  }
   else if (text.includes("#pasangan ")) {
     const request = require('request');
     var gh = text.split("#pasangan ")[1];
