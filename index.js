@@ -179,6 +179,14 @@ conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
+if (text.includes("#animequotes")){
+const teks = text.replace(/#animequotes /, "")
+                 axios.get(`https://arugaz.herokuapp.com/api/randomquotes`).then((res) =>{
+let hasil = `*Quotes :* ${res.data.quotes} \n *Anime :* ${res.data.anime} \n *Author :* ${res.data.author}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
 if (text.includes("#infogempa")){
   const teks = text.replace(/#infogempa /, "")
   axios.get(`https://arugaz.herokuapp.com/api/infogempa`).then ((res) =>{
@@ -246,6 +254,15 @@ conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
+if (text.includes("#covid ")){
+const teks = text.replace(/#covid /, "")
+axios.get(`https://api.haipbis.xyz/corona`).then ((res) =>{
+conn.sendMessage(id, `Permintaan anda sedang di proses, ditunggu aja gan.` ,MessageType.text)
+let hasil =`➸Tempat : ${res.data.result.tempat}\n\n➸Angin : ${res.data.result.angin}\n➸Cuaca : ${res.data.result.cuaca}\n➸Deskripsi : ${res.data.result.desk}\n➸Kelembapan : ${res.data.result.kelembapan}\n➸Suhu : ${res.data.result.suhu}\n➸Udara : ${res.data.result.udara}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
 if (text.includes("#faktaunik")){
 const fetch = require("node-fetch");
 fetch('https://raw.githubusercontent.com/pajaar/grabbed-results/master/pajaar-2020-fakta-unik.txt').then(res =>                             res.text()).then(body => {
@@ -295,6 +312,21 @@ conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
+if (text.includes("#maps")){
+const teks = text.replace(/#maps /, "")
+axios.get(`https://mnazria.herokuapp.com/api/maps?search=j${teks}`).then((res) =>{
+let hasil = `*Hasil* : ${res.data.gambar}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#cooltxt")){
+const teks = text.replace(/#cooltxt /, "")
+axios.get(`https://api.haipbis.xyz/randomcooltext?text=${teks}`).then((res) =>{
+let hasil = `➸ *Text* : ${res.data.text}\n➸ *Hasil* : ${res.data.image}`
+conn.sendMessage(id, hasil, MessageType.text);
+})                                                                                                         }
+
 if (text.includes("#bitly")){
 const teks = text.replace(/#bitly /, "")
 axios.get(`https://api.haipbis.xyz/bitly?url=${teks}`).then((res) => {
@@ -323,6 +355,14 @@ if (text.includes("#spamgmail")){
 const teks = text.replace(/#spamgmail /, "")
 axios.get(`https://arugaz.herokuapp.com/api/spamgmail?target=${teks}&jum=3`).then((res) =>{
 let hasil = `*➸Status* : ${res.data.logs}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#swattpad")){
+const teks = text.replace(/#swattpad /, "")
+axios.get(`https://api.haipbis.xyz/searchwattpad?q=${teks}`).then((res) =>{
+let hasil = `*Judul :* ${res.data.title} \n "Reads :* ${res.data.reads} \n *Votes :* ${res.data.votes} \n *Writer :* ${res.data.writer} \n *Sinopsis :* ${res.data.sinopsis} \n\n *Link :* ${res.data.link}`
 conn.sendMessage(id, hasil, MessageType.text);
 })
 }
@@ -401,8 +441,8 @@ axios.get(`https://api.terhambar.com/ninja?nama=${teks}`).then((res) => {
 
 if (text.includes("#sholat")){
   const teks = text.replace(/#sholat /, "")
-  axios.get(`https://mhankbarbar.herokuapp.com/api/jadwalshalat?daerah=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then ((res) =>{
-  let hasil = `*Jadwal Sholat di ${teks} Hari Ini :*\n\n┌   *Imsyak :* _${res.data.Imsyak} WIB_\n├   *Subuh :* _${res.data.Subuh} WIB_\n├   *Dzuhur :* _${res.data.Dzuhur} WIB_\n├   *Ashar :* _${res.data.Ashar} WIB_\n├   *Maghrib :* _${res.data.Maghrib} WIB_\n├   *Isya :* _${res.data.Isya} WIB_\n└   *Tengah malam :* _${res.data.Dhuha} WIB_`;
+  axios.get(`https://api.haipbis.xyz/jadwalsholat?daerah=${teks}`).then ((res) =>{
+  let hasil = `*Jadwal Sholat di ${teks} Hari Ini :*\n\n┌   *Imsyak :* _${res.data.Imsyak} WIB_\n├   *Subuh :* _${res.data.Subuh} WIB_\n├   *Dhuha :* _${res.data.Dhuha} WIB_\n├   *Dzuhur :* _${res.data.Dzuhur} WIB_\n├   *Ashar :* _${res.data.Ashar} WIB_\n├   *Maghrib :* _${res.data.Maghrib} WIB_\n└   *Isya :* _${res.data.Isya} WIB_\n   `;
   conn.sendMessage(id, hasil, MessageType.text);
 })
 }
