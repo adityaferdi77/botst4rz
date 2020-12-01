@@ -324,11 +324,35 @@ conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
 
+if (text.includes("#filmrame")){
+const teks = text.replace(/#filmrame /, "")
+axios.get(`https://api.haipbis.xyz/mostviewedmovieid}`).then((res) =>{
+let hasil = `*Judul :* \n ${res.data.title} \n *Views :* ${res.data.viewers} \n *Link :* ${res.dara.link}`
+conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
+if (text.includes("#sanime")){
+const teks = text.replace(/#sanime /, "")
+axios.get(`https://mnazria.herokuapp.com/api/anime?query=${teks}`).then((res) =>{
+let hasil = `*Judul :* \n ${res.data.title} \n *Link :* ${res.data.url}`
+conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
+if (text.includes("#nhentai")){
+const teks = text.replace(/#nhentai /, "")
+axios.get(`https://mnazria.herokuapp.com/api/nhentai?code=${teks}`).then((res) =>{
+let hasil = `${res.data}`
+conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
 if (text.includes("#cekip")){
 const teks = text.replace(/#cekip /, "")
 axios.get(`https://mnazria.herokuapp.com/api/check?ip=${teks}`).then((res) =>{
-let hasil = `*IP :* \n ${res.data.ip} \n *Region :* ${res.data.region_name} \n *Region Code :* ${res.data.region_code} \n *Longitude :* ${res.data.longitude} \n *Native :* ${res.data.native} \n *Name :* ${res.data.name} \n *Code :* ${res.data.code} \n *Geoname ID :* ${res.data.geoname_id} \n *Capital :* ${res.data.capital} \n *Calling Code :* ${res.data.calling_code} \n *Latitude :* ${res.data.latitude} \n *Country :* ${res.data.country_name \n *Country Code :* ${res.data.country_code} \n *Continent :* ${res.data.continent_name} \n *Continent Code :* ${res.data.continent_code} \n *City :* ${res.data.city} \n\n `
-conn.sendMessage(id, hasil ,MessageType.text);
+let hasil = `*City* : ${res.data.city}\n*Latitude* : ${res.data.latitude}\n*Longtitude* : ${res.data.longitude}\n*Region* : ${res.data.region_name}\n*Region Code* : ${res.data.region_code}\n*IP* : ${res.data.ip}\n*Type* : ${res.data.type}\n*Name* : ${res.data.name}\n*zip* : ${res.data.zip}\n*Geonime* : ${res.data.location.geoname_id}\n*Capital* : ${res.data.location.capital}\n*Calling* : ${res.data.location.calling_code}\n\n*Country Flag* : ${res.data.location.country_flag}\n\n*CountryFlagEmoji* : ${res.data.location.country_flag_emoji}`
+conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
