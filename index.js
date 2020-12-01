@@ -291,7 +291,7 @@ conn.sendMessage(id, hasil ,MessageType.text);
 if (text.includes("#cekip")){
 const teks = text.replace(/#cekip /, "")
 axios.get(`https://mnazria.herokuapp.com/api/check?ip=${teks}`).then((res) =>{
-let hasil = `*IP :* \n ${res.data.ip} \n *Region :* ${res.data.region_name} \n *Region Code :* ${res.dataregion_code} \n *Country :* ${res.data.country_name \n *Country Code :* ${res.data.country_code} \n *Continent :* ${res.data.continent_name} \n *Continent Code :* ${res.data.continent_code} \n *City :* ${res.data.city} `
+let hasil = `*IP :* \n ${res.data.ip} \n *Region :* ${res.data.region_name} \n *Region Code :* ${res.data.region_code} \n *Longitude :* ${res.data.longitude} \n *Native :* ${res.data.native} \n *Name :* ${res.data.name} \n *Code :* ${res.data.code} \n *Geoname ID :* ${res.data.geoname_id} \n *Capital :* ${res.data.capital} \n *Calling Code :* ${res.data.calling_code} \n *Latitude :* ${res.data.latitude} \n *Country :* ${res.data.country_name \n *Country Code :* ${res.data.country_code} \n *Continent :* ${res.data.continent_name} \n *Continent Code :* ${res.data.continent_code} \n *City :* ${res.data.city} \n\n `
 conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
