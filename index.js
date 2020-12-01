@@ -179,8 +179,8 @@ conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
-if (text.includes("#animequotes")){
-const teks = text.replace(/#animequotes /, "")
+if (text.includes("#nimequotes")){
+const teks = text.replace(/#nimequotes /, "")
                  axios.get(`https://arugaz.herokuapp.com/api/randomquotes`).then((res) =>{
 let hasil = `*Quotes :* ${res.data.quotes} \n *Anime :* ${res.data.anime} \n *Author :* ${res.data.author}`
 conn.sendMessage(id, hasil, MessageType.text);
@@ -316,12 +316,29 @@ conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
 
-if (text.includes("#ssweb")){
-const teks = text.replace(/#ssweb /, "")
-axios.get(`https://mnazria.herokuapp.com/api/screenshotweb?url=${teks}`).then((res) =>{
-let hasil = `*Hasil :* \n ${res.data.gambar}`
-conn.sendMessage(id, hasil ,MessageType.text);
-})
+if (text.includes('#ssweb')){
+  var teks = text.replace(/#ssweb /, '')
+    axios.get('https://mnazria.herokuapp.com/api/screenshotweb?url='+teks)                               .then((res) => {
+      imageToBase64(res.data.gambar)                                                                         .then(
+          (ress) => {                                                                                            conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType >           var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)                                                     })
+    })                                                                                               }                                                                                                    if (text.includes('©map')){
+  var teks = text.replace(/#map /, '')                                                                   axios.get('https://mnazria.herokuapp.com/api/maps?search='+teks)                                     .then((res) => {                                                                                       imageToBase64(res.data.gambar)                                                                         .then(                                                                                                 (ress) => {                                                                                            conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType >           var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })                                                                                               }
+if (text.includes('#nekonime')){
+  var teks = text.replace(/#nekonime /, '')
+    axios.get('https://arugaz.herokuapp.com/api/nekonime')
+.then((res) => {
+      imageToBase64(res.data.result)
+        .then(
+          (ress) => {
+            conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType
+>           var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
 }
 
 if (text.includes("#filmrame")){
@@ -384,14 +401,6 @@ if (text.includes("#jadwaltvnow")){
 const teks = text.replace(/#jadwaltvnow /, "")
 axios.get(`https://api.haipbis.xyz/jadwaltvnow`).then((res) =>{
 let hasil = `*JAM* : ${res.data.jam}\n*JadwalTV* :\n*______________________________________________________* \n${res.data.jadwalTV}`
-conn.sendMessage(id, hasil, MessageType.text);
-})
-}
-
-if (text.includes("#maps")){
-const teks = text.replace(/#maps /, "")
-axios.get(`https://mnazria.herokuapp.com/api/maps?search=j${teks}`).then((res) =>{
-let hasil = `*Hasil* : ${res.data.gambar}`
 conn.sendMessage(id, hasil, MessageType.text);
 })
 }
