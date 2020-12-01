@@ -204,6 +204,42 @@ if (text.includes("#nama")){
 })
 }
 
+if (text.includes("#kbbi")){
+const teks = text.replace(/#kbbi /, "")
+axios.get(`https://mhankbarbar.herokuapp.com/api/kbbi?query=${teks}&lang=id&apiKey=Q70k0Y9YWRSfLfSuhkpf`).then((res) =>{
+let hasil = `*KBBI* : \n${res.data.result}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
+if (text.includes("#jadwaltv")){
+const teks = text.replace(/#jadwaltv /, "")
+axios.get(`https://mhankbarbar.herokuapp.com/api/jdtv?ch=${teks}&apiKey=RAPTOR`).then((res) =>{
+let hasil = `*TV* : *${teks}*\n\n${res.data.result}`
+conn.sendMessage(id, hasil, MessageType.text);                                                                        })
+}
+
+if (text.includes("#selebultahnow")){
+const teks = text.replace(/#selebultahnow /, "")
+axios.get(`https://mhankbarbar.herokuapp.com/api/jdtv?ch=${teks}&apiKey=RAPTOR`).then((res) =>{
+let hasil = `*Nama* : ${res.data.name} \n *Umur :* ${res.data.age} \n *Karir :* ${res.data.career}`
+conn.sendMessage(id, hasil, MessageType.text);                                                                        })
+}
+
+if (text.includes("#berita")){
+const teks = text.replace(/#berita /, "")
+axios.get(`https://api.haipbis.xyz/news`).then((res) =>{
+let hasil = `*Berita* : ${res.data.title} \n *Source :* ${res.data.source} \n\n *Link :* ${res.data.link}`
+conn.sendMessage(id, hasil, MessageType.text);                                                                        })
+}
+
+if (text.includes("#konsernow")){
+const teks = text.replace(/#konsernow /, "")
+axios.get(`https://api.haipbis.xyz/upcomingconcerts`).then((res) =>{
+let hasil = `*Penyanyi/Band* : ${res.data.name} \n *Lokasi :* ${res.data.location} \n\n *Tanggal :* ${res.data.date}`
+conn.sendMessage(id, hasil, MessageType.text);                                                                        })
+}
+
 if (text.includes("#chord")){
 const teks = text.replace(/#chord /, "")
 axios.get(`https://arugaz.herokuapp.com/api/chord?q=${teks}`).then((res) => {
