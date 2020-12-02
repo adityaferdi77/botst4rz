@@ -172,7 +172,20 @@ if (text.includes('#nekonime')){
     .then(
      (ress) => {
        conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
->      var buf = Buffer.from(ress, 'base64')
+       var buf = Buffer.from(ress, 'base64')
+       conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+
+if (text.includes('#loli')){
+ var teks = text.replace(/#loli /, '')
+  axios.get('https://arugaz.herokuapp.com/api/randomloli')
+   .then((res) => { imageToBase64(res.data.result)
+    .then(
+     (ress) => {
+       conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+       var buf = Buffer.from(ress, 'base64')
        conn.sendMessage(id, buf, MessageType.image)
         })
     })
@@ -1111,7 +1124,7 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
     });
     }
 
-   if (text.includes("#loli"))
+   if (text.includes("#l.o.l.i."))
    {
     var items = ["anime loli","anime loli sange","anime loli fackgirll","anime loli i love you"];
     var nime = items[Math.floor(Math.random() * items.length)];
