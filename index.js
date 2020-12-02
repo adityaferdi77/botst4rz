@@ -139,6 +139,45 @@ if (text.includes('#nulis')){
     })
 }
 
+if (text.includes('#ssweb')){
+  var teks = text.replace(/#ssweb /, '')
+    axios.get('https://mnazria.herokuapp.com/api/screenshotweb?url='+teks)
+    .then((res) => { imageToBase64(res.data.gambar)
+      .then(
+       (ress) => {
+         conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+         var buf = Buffer.from(ress, 'base64')
+         conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+
+if (text.includes('#map')){
+ var teks = text.replace(/#map /, '')
+   axios.get('https://mnazria.herokuapp.com/api/maps?search='+teks)
+   .then((res) => { imageToBase64(res.data.gambar)
+    .then(
+     (ress) => {
+       conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+       var buf = Buffer.from(ress, 'base64')
+       conn.sendMessage(id, buf, MessageType.image)
+       })
+    }) 
+}
+
+if (text.includes('#nekonime')){
+ var teks = text.replace(/#nekonime /, '')
+  axios.get('https://arugaz.herokuapp.com/api/nekonime')
+   .then((res) => { imageToBase64(res.data.result)
+    .then(
+     (ress) => {
+       conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+>      var buf = Buffer.from(ress, 'base64')
+       conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+
 if (text.includes("#ytmp3")){
 const teks = text.replace(/#ytmp3 /, "")
 axios.get(`https://alfians-api.herokuapp.com/api/yta?url=${teks}`).then((res) => {
@@ -899,32 +938,7 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
                })
        }
    }
-
-if (text.includes('#ssweb')){
-  var teks = text.replace(/#ssweb /, '')
-    axios.get('https://mnazria.herokuapp.com/api/screenshotweb?url='+teks)                               .then((res) => {
-      imageToBase64(res.data.gambar)                                                                         .then(
-          (ress) => {                                                                                            conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType >           var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, buf, MessageType.image)                                                     })
-    })                                                                                               }                                                                                                    if (text.includes('©map')){
-  var teks = text.replace(/#map /, '')                                                                   axios.get('https://mnazria.herokuapp.com/api/maps?search='+teks)                                     .then((res) => {                                                                                       imageToBase64(res.data.gambar)                                                                         .then(                                                                                                 (ress) => {                                                                                            conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType >           var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, buf, MessageType.image)
-        })
-    })                                                                                               }
-if (text.includes('#nekonime')){
-  var teks = text.replace(/#nekonime /, '')
-    axios.get('https://arugaz.herokuapp.com/api/nekonime')
-.then((res) => {
-      imageToBase64(res.data.result)
-        .then(
-          (ress) => {
-            conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType
->           var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, buf, MessageType.image)
-        })
-    })
-}
-
+                                                                                               }
    if (messageType == 'imageMessage')
    {
       let caption = imageMessage.caption.toLocaleLowerCase()
@@ -1096,7 +1110,6 @@ if (text.includes('#nekonime')){
     
     });
     }
-
 
    if (text.includes("#loli"))
    {
