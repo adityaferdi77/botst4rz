@@ -934,24 +934,7 @@ else if (text == '#ptl'){
 conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType.text);
 }
 
-  // Optical Character Recognition
-  if (messageType == 'imageMessage')
-   {
-       let caption = imageMessage.caption.toLocaleLowerCase()
-       if (caption == '#ocr')
-       {
-           const img = await conn.downloadAndSaveMediaMessage(m)
-           readTextInImage(img)
-               .then(data => {
-                   console.log(data)
-                   conn.sendMessage(id, `*Read Data Text in Image* \n\nHasil: \n\n${data}`, MessageType.text);
-               })
-               .catch(err => {
-                   console.log(err)
-               })
-       }
-   }
-                                                                                               }
+  // Optical Character Recognition                                                                                         }
    if (messageType == 'imageMessage')
    {
       let caption = imageMessage.caption.toLocaleLowerCase()
