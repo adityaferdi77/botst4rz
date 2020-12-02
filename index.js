@@ -595,7 +595,7 @@ axios.get(`https://mhankbarbar.herokuapp.com/api/ig?url=${teks}&apiKey=RAPTOR}`)
 
 if (text.includes("#twt")){
 const teks = text.replace(/#twt /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/api/twit?url=https://twitter.com/PassengersMovie/status/821025484150423557&apiKey=RAPTOR`).then((res) => {
+axios.get(`https://mhankbarbar.herokuapp.com/api/twit?url=${teks}&apiKey=RAPTOR`).then((res) => {
     let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nJudul: ${res.data.title}\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
