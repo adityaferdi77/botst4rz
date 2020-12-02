@@ -152,6 +152,19 @@ if (text.includes('#ssweb')){
     })
 }
 
+if (text.includes('#textimage')){
+  var teks = text.replace(/#textimage /, '')
+    axios.get('https://mhankbarbar.herokuapp.com/api/text2image?text='+teks&apiKey=RAPTOR)
+    .then((res) => { imageToBase64(res.data.gambar)
+      .then(
+       (ress) => {
+         conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+         var buf = Buffer.from(ress, 'base64')
+         conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+
 if (text.includes('#map')){
  var teks = text.replace(/#map /, '')
    axios.get('https://mnazria.herokuapp.com/api/maps?search='+teks)
@@ -178,10 +191,62 @@ if (text.includes('#nekonime')){
     })
 }
 
+if (text.includes('#randomhentai')){
+ var teks = text.replace(/#randomhentai /, '')
+  axios.get('https://mhankbarbar.herokuapp.com/api/random/hentai?apiKey=RAPTOR')
+   .then((res) => { imageToBase64(res.data.result)
+    .then(
+     (ress) => {
+       conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+       var buf = Buffer.from(ress, 'base64')
+       conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+
+if (text.includes('#animewall')){
+ var teks = text.replace(/#animewall /, '')
+  axios.get('https://mhankbarbar.herokuapp.com/api/random/hentai?apiKey=RAPTOR')
+   .then((res) => { imageToBase64(res.data.result)
+    .then(
+     (ress) => {
+       conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+       var buf = Buffer.from(ress, 'base64')
+       conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+
 if (text.includes('#loli')){
  var teks = text.replace(/#loli /, '')
   axios.get('https://arugaz.herokuapp.com/api/randomloli')
    .then((res) => { imageToBase64(res.data.result)
+    .then(
+     (ress) => {
+       conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+       var buf = Buffer.from(ress, 'base64')
+       conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+
+if (text.includes('#profilig')){
+ var teks = text.replace(/#profilig /, '')
+  axios.get('https://arugaz.herokuapp.com/api/stalk?username='+teks)
+   .then((res) => { imageToBase64(res.data.Profile_pic)
+    .then(
+     (ress) => {
+       conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+       var buf = Buffer.from(ress, 'base64')
+       conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+
+if (text.includes('#profiltwt')){
+ var teks = text.replace(/#profiltwt /, '')
+  axios.get('https://mhankbarbar.herokuapp.com/api/twstalk?username='+teks&apiKey=RAPTOR)
+   .then((res) => { imageToBase64(res.data.Profile_pic)
     .then(
      (ress) => {
        conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
@@ -215,6 +280,14 @@ conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
+if (text.includes("#puisi2")){
+const teks = text.replace(/#puisi2 /, "")
+                 axios.get(`https://arugaz.herokuapp.com/api/puisi2`).then((res) =>{
+let hasil = `${res.data.result}`
+conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
 if (text.includes("#puisi3")){
 const teks = text.replace(/#puisi3 /, "")
                  axios.get(`https://arugaz.herokuapp.com/api/puisi3`).then((res) =>{
@@ -233,7 +306,7 @@ conn.sendMessage(id, hasil, MessageType.text);
 
 if (text.includes("#nimequotes")){
 const teks = text.replace(/#nimequotes /, "")
-                 axios.get(`https://arugaz.herokuapp.com/api/randomquotes`).then((res) =>{
+                 axios.get(`http://mhankbarbar.herokuapp.com/api/quotesnime/random`).then((res) =>{
 let hasil = `*Quotes :* ${res.data.quotes} \n *Anime :* ${res.data.anime} \n *Author :* ${res.data.author}`
 conn.sendMessage(id, hasil, MessageType.text);
 })
@@ -325,6 +398,7 @@ axios.get(`https://mnazria.herokuapp.com/api/fbdownloadervideo?url=${teks}`).the
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
+
 if (text.includes("#igstalk")){
 const teks = text.replace(/#igstalk /, "")
 axios.get(`https://arugaz.herokuapp.com/api/stalk?username=${teks}`).then ((res) =>{
@@ -333,9 +407,17 @@ conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
 
+if (text.includes("#twtstalk")){
+const teks = text.replace(/#twtstalk /, "")
+axios.get(`https://mhankbarbar.herokuapp.com/api/twstalk?username=${teks}&apiKey=RAPTOR`).then ((res) =>{
+let hasil = `_*STALK IG*_\n*➸Username* : ${res.data.Username}\n*➸Nama* : ${res.data.Name}\n*➸Follower* : ${res.data.Jumlah_Followers}\n*➸Followed* : ${res.data.Jumlah_Following}\n*➸Jumlah_Postingan* : ${res.data.Jumlah_Post}\n*➸Biodata* : ${res.data.Biodata}\n*_________________________________________*\n\n*➸Profile* : ${res.data.Profile_pic}`;
+conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
 if (text.includes("#cuaca ")){
 const teks = text.replace(/#cuaca /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/api/cuaca?q=${teks}&apiKey=IsDssiTLL9hE7ofCV1Ot`).then ((res) =>{
+axios.get(`https://mhankbarbar.herokuapp.com/api/cuaca?q=${teks}&apiKey=RAPTOR`).then ((res) =>{
 conn.sendMessage(id, `Permintaan anda sedang di proses, ditunggu aja gan.` ,MessageType.text)
 let hasil =`➸Tempat : ${res.data.result.tempat}\n\n➸Angin : ${res.data.result.angin}\n➸Cuaca : ${res.data.result.cuaca}\n➸Deskripsi : ${res.data.result.desk}\n➸Kelembapan : ${res.data.result.kelembapan}\n➸Suhu : ${res.data.result.suhu}\n➸Udara : ${res.data.result.udara}`
 conn.sendMessage(id, hasil, MessageType.text);
@@ -495,14 +577,6 @@ conn.sendMessage(id, hasil, MessageType.text);
 })
 }
 
-if (text.includes("#textimage")){
-const teks = text.replace(/#textimage /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/api/text2image?text=${teks}&apiKey=IsDssiTLL9hE7ofCV1Ot`).then((res) => {
-let hasil = `Teks image telah tersedia klik link dibawah\n\n*HASIL* : ${res.data.result}`
-conn.sendMessage(id, hasil, MessageType.text);
-})
-}
-
 if (text.includes("#seberapabucin")){     
 const teks = text.replace(/#seberapabucin /, "")
 axios.get(`https://arugaz.herokuapp.com/api/howbucins`).then((res) =>{
@@ -513,7 +587,7 @@ conn.sendMessage(id, hasil, MessageType.text);
 
 if (text.includes("#ig")){
 const teks = text.replace(/#ig /, "")
-axios.get(`https://st4rz.herokuapp.com/api/ig?url=${teks}`).then((res) => {
+axios.get(`https://mhankbarbar.herokuapp.com/api/ig?url=${teks}&apiKey=RAPTOR}`).then((res) => {
     let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
@@ -521,7 +595,7 @@ axios.get(`https://st4rz.herokuapp.com/api/ig?url=${teks}`).then((res) => {
 
 if (text.includes("#twt")){
 const teks = text.replace(/#twt /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/api/twit?url=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
+axios.get(`https://mhankbarbar.herokuapp.com/api/twit?url=https://twitter.com/PassengersMovie/status/821025484150423557&apiKey=RAPTOR`).then((res) => {
     let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nJudul: ${res.data.title}\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
@@ -1078,7 +1152,7 @@ conn.sendMessage(id, 'kirim #ptl cewek/cowok\n\nContoh: #ptl cewek' ,MessageType
          });
    }
 
-   if (text.includes("#randomhentai"))
+   if (text.includes("#randomh...entai"))
    {
     var items = ["nsfwneko","anime hentai"];
     var anim = items[Math.floor(Math.random() * items.length)];
