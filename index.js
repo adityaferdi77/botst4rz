@@ -245,7 +245,7 @@ if (text.includes('!profilig')){
 
 if (text.includes('!profiltwt')){
  var teks = text.replace(/!profiltwt /, '')
-  axios.get('https://mhankbarbars.herokuapp.com/api/twstalk?username='+teks&apiKey=RAPTOR)
+  axios.get('https://mhankbarbars.herokuapp.com/api/twstalk?username='+teks+'&apiKey=RAPTOR)
    .then((res) => { imageToBase64(res.data.Profile_pic)
     .then(
      (ress) => {
